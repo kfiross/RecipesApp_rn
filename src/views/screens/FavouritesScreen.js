@@ -1,0 +1,70 @@
+import React, {useEffect} from 'react';
+import {Text, View, Button, TouchableOpacity} from 'react-native';
+import {Appbar, TextInput} from 'react-native-paper';
+import {useNavigation} from '@react-navigation/core';
+import {Icon} from 'react-native-elements';
+import Space from '../components/Space';
+import RecipeStore from '../../stores/RecipeStore';
+import auth from '@react-native-firebase/auth';
+import {observer} from 'mobx-react';
+import {ScrollView} from 'react-native-gesture-handler';
+import RecipeComponent from '../components/RecipeComponent';
+
+const FavouritesScreen = () => {
+  const navigation = useNavigation();
+
+  const store = new RecipeStore();
+
+  useEffect(() => {
+    store.getFavouritesRecipes(auth().currentUser.uid);
+  }, []);
+
+
+  return (
+    <View>
+      <Appbar.Header>
+        <Icon
+          reverse
+          name='menu'
+          type='ionicon'
+          color='transparent'
+          onPress={() => navigation.openDrawer()}
+        />
+        <Appbar.Content
+          title={<Text>Favourites</Text>}
+          style={{ alignItems: 'center', paddingEnd: 70}}>
+        </Appbar.Content>
+      </Appbar.Header>
+
+
+      <View style={{paddingLeft: 10, paddingRight: 10}}>
+        <RecipesInfo store={store} />
+      </View>
+    </View>
+  );
+};
+
+@observer
+class RecipesInfo extends React.Component {
+  render() {
+    let {store} = this.props;
+    return (
+      <ScrollView style={{marginTop: 12}}>
+        {
+          store.recipes.map((recipe, i) => {
+            return (<RecipeComponent key={i} recipe={recipe}/>);
+          })
+        }
+      </ScrollView>
+    );
+  }
+}
+
+export default FavouritesScreen;
+
+const styles = {
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+};
