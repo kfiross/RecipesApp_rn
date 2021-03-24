@@ -1,12 +1,40 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, View, Button, Image, TouchableHighlight} from 'react-native';
-import {Card} from 'react-native-paper';
+import {Card, IconButton, Colors} from 'react-native-paper';
 import {ScrollView} from 'react-native-gesture-handler';
-import Recipe from '../../model/Recipe';
 import {useNavigation} from '@react-navigation/core';
+import RecipeStore from '../../stores/RecipeStore';
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
+
 
 const RecipeComponent = ({recipe}) => {
   const navigation = useNavigation();
+  const [isFav, setIsFav] = useState(false);
+
+  useEffect(() => {
+    firestore().doc(`users/${auth().currentUser.uid}`).get().then((snapshot) => {
+      if(snapshot.get('favourites') == null || snapshot.get('favourites') === []){
+        setIsFav(false)
+      }
+      setIsFav(snapshot.get('favourites').includes(recipe.id))
+    })
+  }, []);
+
+  const updateIfFav = async () => {
+    if(isFav) {
+      await firestore().doc(`users/${auth().currentUser.uid}`).update(
+        'favourites', firestore.FieldValue.arrayRemove(recipe.id)
+      );
+    }
+    else{
+      await firestore().doc(`users/${auth().currentUser.uid}`).update(
+        'favourites', firestore.FieldValue.arrayUnion(recipe.id)
+      );
+    }
+
+    setIsFav(!isFav);
+  }
 
   return (
     <View style={{marginBottom: 12}}>
@@ -16,8 +44,19 @@ const RecipeComponent = ({recipe}) => {
         <Card style={styles.card}>
           <View style={{flex: 1, flexDirection: 'row'}}>
             <View style={{flex: 6}}>
+              <View style={{position:'absolute'}}>
+
+                  <IconButton style={{backgroundColor: 'white', zIndex: 5}}
+                              icon="star"
+                              color={isFav ? Colors.red500 : Colors.black}
+                              size={28}
+                              onPress={() => updateIfFav()}>
+                  </IconButton>
+
+
+              </View>
               <Image source={{uri: recipe.image}}
-                     style={{flex: 1, overflow: 'hidden', borderRadius: 12, borderTopRightRadius: 0, borderBottomRightRadius: 0}}>
+                     style={{flex: 1, zIndex: 2, overflow: 'hidden', borderRadius: 12, borderTopRightRadius: 0, borderBottomRightRadius: 0}}>
               </Image>
             </View>
             <View style={{width: 12}}/>
