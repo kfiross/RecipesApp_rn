@@ -17,24 +17,16 @@ import {Button, Text, I18nManager, View} from 'react-native';
 import DrawerContentScrollView from '@react-navigation/drawer/src/views/DrawerContentScrollView';
 import DrawerItemList from '@react-navigation/drawer/src/views/DrawerItemList';
 import DrawerItem from '@react-navigation/drawer/src/views/DrawerItem';
-import {Appbar, Divider} from 'react-native-paper';
+
 import Space from './src/views/components/Space';
 import {Icon} from 'react-native-elements';
 import FavouritesScreen from './src/views/screens/FavouritesScreen';
 
-
+import { Divider } from 'react-native-elements';
 
 import {useTranslation} from 'react-i18next';
 
-I18nManager.forceRTL(true);
 import './src/services/i18n';
-
-
-// import {
-//   I18nManager as RNI18nManager,
-// } from 'react-native';
-//
-// import i18n from './src/services/i18n';
 
 
 const Stack = createStackNavigator();
@@ -96,17 +88,19 @@ function CustomDrawerContent(props) {
         style={{
           backgroundColor: '#3f51b5',
           height: 160,
+          marginTop: -8,
           paddingBottom: 12,
           paddingStart: 8,
+          paddingEnd: 8,
         }}
       >
         <View style={{flex: 1}}/>
-        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}>Kfir</Text>
-        <Text style={{ color: 'white', fontSize: 14}}>1@1.com</Text>
+        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold'}}>User</Text>
+        <Text style={{ color: 'white', fontSize: 14}}>{auth().currentUser.email}</Text>
       </View>
       <DrawerItemList {...props} />
       <Space height={12}/>
-      <Text style={{paddingStart: 8, fontWeight: 'bold', fontSize: 15}}>options</Text>
+      <Divider style={{ backgroundColor: 'blue', height: 1 }} />
       <DrawerItem
         label={t('disconnect')}
         icon={({ _, __ }) => (<Icon name='logout' size={20} color="#3f51b5"/>)}
