@@ -3,12 +3,11 @@ import {Text, View, Button, TouchableOpacity, Observer} from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/core';
 import RecipeComponent from '../components/RecipeComponent';
 import {ScrollView} from 'react-native-gesture-handler';
-import Recipe from '../../model/Recipe';
 import firestore from '@react-native-firebase/firestore';
 import RecipeStore from '../../stores/RecipeStore';
 import {observer} from 'mobx-react';
 
-const DetailsScreen = () => {
+const CategoryScreen = () => {
   const {name, index} = useRoute().params;
   const navigation = useNavigation();
 
@@ -48,7 +47,7 @@ class RecipesInfo extends React.Component {
   }
 }
 
-export default DetailsScreen;
+export default CategoryScreen;
 
 const styles = {
   title: {

@@ -18,5 +18,11 @@
   "category_4": "דגים",
   "category_5": "צמחוני",
   "ingredients": "מרכיבים",
-  "steps": "אופן הכנה"
+  "steps": "אופן הכנה",
+
+  "add_new_recipe": "הוספת מתכון",
+  "enter_recipe_name": "שם המתכון",
+  "enter_ingredients": "רשימת מצרכים",
+  "enter_steps": "צעדים/אופן הכנה",
+  "add_recipe":"הוסף מתכון!"
 }

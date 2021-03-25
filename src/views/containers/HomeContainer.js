@@ -1,6 +1,6 @@
 import {useTranslation} from 'react-i18next';
 import HomeScreen from '../screens/HomeScreen';
-import DetailsScreen from '../screens/DetailsScreen';
+import CategoryScreen from '../screens/CategoryScreen';
 import RecipeDetailsScreen from '../screens/RecipeDetailsScreen';
 import React from 'react';
 
@@ -23,7 +23,7 @@ const HomeContainer = () => {
         headerTitleAlign: 'center',
       }}>
       <Stack.Screen name={t('all_recipes')} component={HomeScreen}/>
-      <Stack.Screen name="RecipesCategory" component={DetailsScreen}/>
+      <Stack.Screen name="RecipesCategory" component={CategoryScreen}/>
       <Stack.Screen name="RecipeDetails" component={RecipeDetailsScreen}/>
     </Stack.Navigator>
   );
