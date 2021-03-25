@@ -2,10 +2,13 @@ import React from 'react';
 import {Text, View, Button, TouchableOpacity, Image, ScrollView} from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/core';
 import Space from '../components/Space';
+import {useTranslation} from 'react-i18next';
 
 const RecipeDetailsScreen = () => {
   const {recipe} = useRoute().params;
   const navigation = useNavigation();
+  const {t} = useTranslation();
+
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -18,7 +21,7 @@ const RecipeDetailsScreen = () => {
       <Image source={{uri: recipe.image}}
              style={{height: 200}}/>
       <View style={styles.content}>
-        <Text style={styles.title}>Ingredients</Text>
+        <Text style={styles.title}>{t('ingredients')}:</Text>
         <View>
           {
             recipe.ingredients.map((ingredient, index) => {
@@ -32,7 +35,7 @@ const RecipeDetailsScreen = () => {
           }
         </View>
         <View style={{height: 12}}/>
-        <Text style={styles.title}>Steps:</Text>
+        <Text style={styles.title}>{t('steps')}:</Text>
         <View>
           {
             recipe.steps.map((step, index) => {

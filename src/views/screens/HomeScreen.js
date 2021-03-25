@@ -9,16 +9,19 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
+import {useTranslation} from 'react-i18next';
+
 const HomeScreen = () => {
   const colors = ['#cccc00', '#ffbb33', '#ff4444', '#33b5e5', '#4CAF50'];
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   const categories = [
-    'Sweets',
-    'Chicken',
-    'Meat',
-    'Fish',
-    'Vegan',
+    t('category_1'),
+    t('category_2'),
+    t('category_3'),
+    t('category_4'),
+    t('category_5'),
   ];
 
   React.useLayoutEffect(() => {

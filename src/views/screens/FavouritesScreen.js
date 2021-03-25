@@ -9,9 +9,11 @@ import auth from '@react-native-firebase/auth';
 import {observer} from 'mobx-react';
 import {ScrollView} from 'react-native-gesture-handler';
 import RecipeComponent from '../components/RecipeComponent';
+import {useTranslation} from 'react-i18next';
 
 const FavouritesScreen = () => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   const store = new RecipeStore();
 
@@ -31,7 +33,7 @@ const FavouritesScreen = () => {
           onPress={() => navigation.openDrawer()}
         />
         <Appbar.Content
-          title={<Text>Favourites</Text>}
+          title={<Text>{t('favourites')}</Text>}
           style={{ alignItems: 'center', paddingEnd: 70}}>
         </Appbar.Content>
       </Appbar.Header>

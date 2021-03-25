@@ -1,0 +1,22 @@
+{
+  "welcome": "ברוכים הבאים ל-Reciper",
+  "home": "$t(all_recipes)",
+  "all_recipes": "כל המתכונים",
+  "create_recipe": "הוספת מתכון חדש",
+  "favourites": "מועדפים",
+  "disconnect":"התנתק מהחשבון",
+  "login": "כניסה",
+  "register": "הירשם",
+  "go_to_register": "אני חדש, אני רוצה להירשם",
+  "go_to_login": "יש לי חשבון, אני רוצה להיכנס",
+  "enter_email": "מייל",
+  "enter_password": "סיסמא",
+
+  "category_1": "מתוקים",
+  "category_2": "עוף",
+  "category_3": "בשר",
+  "category_4": "דגים",
+  "category_5": "צמחוני",
+  "ingredients": "מרכיבים",
+  "steps": "אופן הכנה"
+}
