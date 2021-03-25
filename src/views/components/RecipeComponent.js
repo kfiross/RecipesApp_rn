@@ -3,34 +3,32 @@ import {Text, View, Button, Image, TouchableHighlight} from 'react-native';
 import {Card, IconButton, Colors} from 'react-native-paper';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/core';
-import RecipeStore from '../../stores/RecipeStore';
-import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
+import RecipesApi from '../../services/api/RecipesApi';
 
 
 const RecipeComponent = ({recipe}) => {
   const navigation = useNavigation();
   const [isFav, setIsFav] = useState(false);
+  const currUserId = auth().currentUser.uid;
 
   useEffect(() => {
-    firestore().doc(`users/${auth().currentUser.uid}`).get().then((snapshot) => {
-      if(snapshot.get('favourites') == null || snapshot.get('favourites') === []){
+    RecipesApi.getUserFavsRecipes(currUserId).then((favRecipes) => {
+      if(favRecipes == null || favRecipes === []){
         setIsFav(false)
       }
-      setIsFav(snapshot.get('favourites').includes(recipe.id))
+      else {
+        setIsFav(favRecipes.includes(recipe.id))
+      }
     })
   }, []);
 
   const updateIfFav = async () => {
     if(isFav) {
-      await firestore().doc(`users/${auth().currentUser.uid}`).update(
-        'favourites', firestore.FieldValue.arrayRemove(recipe.id)
-      );
+      await RecipesApi.removeRecipeFromUserFavs(recipe.id, currUserId);
     }
     else{
-      await firestore().doc(`users/${auth().currentUser.uid}`).update(
-        'favourites', firestore.FieldValue.arrayUnion(recipe.id)
-      );
+      await RecipesApi.addRecipeToUserFavs(recipe.id, currUserId);
     }
 
     setIsFav(!isFav);

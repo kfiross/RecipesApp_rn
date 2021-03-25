@@ -10,15 +10,19 @@ import {observer} from 'mobx-react';
 import {ScrollView} from 'react-native-gesture-handler';
 import RecipeComponent from '../components/RecipeComponent';
 import {useTranslation} from 'react-i18next';
+import  firestore from  '@react-native-firebase/firestore';
 
 const FavouritesScreen = () => {
   const navigation = useNavigation();
   const {t} = useTranslation();
 
   const store = new RecipeStore();
+  const currUserId = auth().currentUser.uid;
 
   useEffect(() => {
-    store.getFavouritesRecipes(auth().currentUser.uid);
+    firestore().doc(`users/${currUserId}`).onSnapshot(() => {
+      store.getFavouritesRecipes(currUserId);
+    });
   }, []);
 
 
