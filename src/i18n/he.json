@@ -17,12 +17,14 @@
   "category_3": "בשר",
   "category_4": "דגים",
   "category_5": "צמחוני",
-  "ingredients": "מרכיבים",
+  "ingredients": "מצרכים",
   "steps": "אופן הכנה",
 
   "add_new_recipe": "הוספת מתכון",
-  "enter_recipe_name": "שם המתכון",
-  "enter_ingredients": "רשימת מצרכים",
-  "enter_steps": "צעדים/אופן הכנה",
-  "add_recipe":"הוסף מתכון!"
+  "enter_recipe_name": "שם המתכון...",
+  "add_recipe":"הוסף מתכון!",
+  "enter_ingredient": "הכנס תיאור מצרך...",
+  "enter_step": "הכנס תיאור צעד...",
+  "add": "הוסף",
+  "remove": "הסר"
 }

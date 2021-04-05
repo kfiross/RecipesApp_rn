@@ -10,7 +10,7 @@ import {observer} from 'mobx-react';
 import {ScrollView} from 'react-native-gesture-handler';
 import RecipeComponent from '../components/RecipeComponent';
 import {useTranslation} from 'react-i18next';
-import  firestore from  '@react-native-firebase/firestore';
+import firestore from  '@react-native-firebase/firestore';
 
 const FavouritesScreen = () => {
   const navigation = useNavigation();
@@ -24,7 +24,6 @@ const FavouritesScreen = () => {
       store.getFavouritesRecipes(currUserId);
     });
   }, []);
-
 
   return (
     <View>
