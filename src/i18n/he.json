@@ -25,6 +25,19 @@
   "add_recipe":"הוסף מתכון!",
   "enter_ingredient": "הכנס תיאור מצרך...",
   "enter_step": "הכנס תיאור צעד...",
+  "notes": "הערות",
+  "enter_notes": "רשמו כאן הערות בנוגע למתכון...",
   "add": "הוסף",
-  "remove": "הסר"
+  "remove": "הסר",
+  "type": "יחידה",
+  "count": "כמות",
+  "name": "שם",
+
+
+
+  "unit_g": "גרם",
+  "unit_kg":"ק''ג",
+  "unit_cup": "כוסות",
+  "unit_spoon": "כפות",
+  "unit_teaspoon": "כפיות"
 }
