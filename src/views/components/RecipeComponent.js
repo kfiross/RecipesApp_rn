@@ -5,12 +5,15 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/core';
 import auth from '@react-native-firebase/auth';
 import RecipesApi from '../../services/api/RecipesApi';
+import Images from '../../res/images';
+import {ImageLoader} from 'react-native-image-fallback';
 
 
 const RecipeComponent = ({recipe}) => {
   const navigation = useNavigation();
   const [isFav, setIsFav] = useState(false);
   const currUserId = auth().currentUser.uid;
+
 
   useEffect(() => {
     RecipesApi.getUserFavsRecipes(currUserId).then((favRecipes) => {
@@ -51,11 +54,12 @@ const RecipeComponent = ({recipe}) => {
                               onPress={() => updateIfFav()}>
                   </IconButton>
 
-
               </View>
-              <Image source={{uri: recipe.image}}
-                     style={{flex: 1, zIndex: 2, overflow: 'hidden', borderRadius: 12, borderTopRightRadius: 0, borderBottomRightRadius: 0}}>
-              </Image>
+              <ImageLoader
+                style={{flex: 1, zIndex: 2,width: 160, overflow: 'hidden', borderRadius: 12, borderTopRightRadius: 0, borderBottomRightRadius: 0}}
+                source={recipe.image}
+                fallback={Images.not_found}
+              />
             </View>
             <View style={{width: 12}}/>
             <View style={[styles.content, {flex: 7}]}>

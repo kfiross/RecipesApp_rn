@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View, TouchableOpacity, ScrollView} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import {Appbar, Button, TextInput} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/core';
 import {Icon} from 'react-native-elements';
@@ -10,6 +10,7 @@ import {
 } from 'react-native-responsive-screen';
 import {Picker} from '@react-native-community/picker';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import Ingredient from '../../model/Ingredient';
 
 const IngredientInput = ({ingredient}) => {
   const [gender, setGender] = useState();
@@ -27,14 +28,14 @@ const IngredientInput = ({ingredient}) => {
     <View style={{display: 'flex', flexDirection: 'row', marginBottom: 10}}>
       <View style={{flex: 1}}>
         <Text>{t('name')}</Text>
-        <TextInput value={ingredient}  multiline={true}  />
+        <TextInput value={ingredient.name}  multiline={true}  />
       </View>
 
       <Space width={12}/>
 
       <View>
         <Text>{t('count')}</Text>
-        <TextInput value={ingredient} style={{width: 60}} />
+        <TextInput value={ingredient.count} style={{width: 60}} />
       </View>
 
 
@@ -56,7 +57,6 @@ const IngredientInput = ({ingredient}) => {
       </View>
 
     </View>
-
   );
 }
 
@@ -90,7 +90,7 @@ const body = () => {
   const [steps, setSteps] = useState(Array.from({length: 3}));
 
 
-  const addIngredient = () => setIngredients([...ingredients, '']);
+  const addIngredient = () => setIngredients([...ingredients, new Ingredient()]);
   const removeIngredient = () => {
     if(ingredients.length > 2) {
       setIngredients(ingredients.slice(0, -1));
@@ -124,7 +124,7 @@ const body = () => {
       {
         ingredients.map((ingredient, i) => {
           return (
-            <IngredientInput key={`ingredient_${i}`}/>
+            <IngredientInput ingredient={ingredient ?? new Ingredient()} key={`ingredient_${i}`}/>
           )
         })
       }
@@ -152,9 +152,9 @@ const body = () => {
         <Text style={[styles.title, {paddingTop: 4}]}>{t('notes')}</Text>
         <Space height={8}/>
         <TextInput
+          numberOfLines={4}
           multiline={true} placeholder={t('enter_notes')} />
       </View>
-      {/*<KeyboardSpacer/>*/}
 
     </View>
   );
@@ -172,7 +172,6 @@ const bottom = () => {
     </Button>
   );
 }
-
 
 
 const CreateRecipeScreenContent = ({appBar, body, bottom}) => {

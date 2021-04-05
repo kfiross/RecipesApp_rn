@@ -3,6 +3,9 @@ import {Text, View, Button, TouchableOpacity, Image, ScrollView} from 'react-nat
 import {useNavigation, useRoute} from '@react-navigation/core';
 import Space from '../components/Space';
 import {useTranslation} from 'react-i18next';
+import {ImageLoader} from 'react-native-image-fallback';
+import Images from '../../res/images';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 const RecipeDetailsScreen = () => {
   const {recipe} = useRoute().params;
@@ -18,8 +21,14 @@ const RecipeDetailsScreen = () => {
 
   return (
     <ScrollView>
-      <Image source={{uri: recipe.image}}
-             style={{height: 200}}/>
+      {/*<Image source={{uri: recipe.image}}*/}
+      {/*       style={{height: 200}}/>*/}
+
+      <ImageLoader
+        style={{height: 200, width: wp(100)}}
+        source={recipe.image}
+        fallback={Images.not_found}
+      />
       <View style={styles.content}>
         <Text style={styles.title}>{t('ingredients')}:</Text>
         <View>
