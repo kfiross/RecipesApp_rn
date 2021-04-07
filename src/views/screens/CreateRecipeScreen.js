@@ -8,7 +8,6 @@ import {useTranslation} from 'react-i18next';
 import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {Picker} from '@react-native-community/picker';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Ingredient from '../../model/Ingredient';
 
