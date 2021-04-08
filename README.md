@@ -17,7 +17,7 @@ You can download the (Android) demo app [here](output/demo_app.apk)
 * **State management**: [MobX](https://mobx.js.org)
 * **Backend**: Firebase (Baas)  
 * **HTTP**: Using [axios](https://www.npmjs.com/package/axios)   
-* ~~**Performance**: Using [Hermes](https://reactnative.dev/docs/hermes) Engine (Android Only)~~
+* **Performance**: Using [Hermes](https://reactnative.dev/docs/hermes) Engine (Android Only)
 
 ## Screenshots
 
