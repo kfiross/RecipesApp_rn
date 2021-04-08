@@ -11,6 +11,7 @@ import auth from '@react-native-firebase/auth';
 import DrawerItemList from '@react-navigation/drawer/src/views/DrawerItemList';
 import Space from '../components/Space';
 import DrawerItem from '@react-navigation/drawer/src/views/DrawerItem';
+import SearchScreen from '../screens/SearchScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -67,6 +68,10 @@ const MainContainer = () => {
 
       <Drawer.Screen name={t('favourites')} component={FavouritesScreen} options={{
         drawerIcon: ({ _, __ }) => (<Icon name='star' size={20} color="#3f51b5"/>)
+      }}/>
+
+      <Drawer.Screen name={t('search_recipes')} component={SearchScreen} options={{
+        drawerIcon: ({ _, __ }) => (<Icon name='search' size={20} color="#3f51b5"/>)
       }}/>
     </Drawer.Navigator>
   );

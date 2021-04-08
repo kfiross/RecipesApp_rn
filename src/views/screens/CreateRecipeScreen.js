@@ -10,6 +10,7 @@ import {
 } from 'react-native-responsive-screen';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Ingredient from '../../model/Ingredient';
+import {Picker} from '@react-native-picker/picker';
 
 const IngredientInput = ({ingredient}) => {
   const [gender, setGender] = useState();
