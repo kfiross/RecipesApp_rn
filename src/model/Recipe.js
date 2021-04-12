@@ -23,4 +23,14 @@ export default class Recipe {
       documentSnapshot.data().category,
     );
   }
+
+  containsIngredient(ingredientName) {
+    for(let ingredient of this.ingredients){
+      if(ingredient.name.includes(ingredientName)){
+        return true;
+      }
+    }
+
+    return false;
+  }
 }

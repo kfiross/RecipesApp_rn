@@ -25,14 +25,18 @@ You can download the (Android) demo app [here](output/demo_app.apk)
 
 ![](screenshots/home.png)
 
-* Category's Recipes Screen
+* Category's recipes screen
 
 ![](screenshots/category.png)
 
-* Recipe Details Screen:
+* Recipe details screen:
 
 ![](screenshots/details.png)
 
-* Favourites Details Screen:
+* User's favourites screen:
 
 ![](screenshots/favs.png)
+
+* Search For recipe
+
+![](screenshots/search.png) 

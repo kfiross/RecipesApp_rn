@@ -40,5 +40,9 @@
   "unit_kg":"ק''ג",
   "unit_cup": "כוסות",
   "unit_spoon": "כפות",
-  "unit_teaspoon": "כפיות"
+  "unit_teaspoon": "כפיות",
+
+  "chosen_ingredients": "מצרכים שנבחרו:",
+  "results": "תוצאות שנמצאו",
+  "search": "חיפוש"
 }

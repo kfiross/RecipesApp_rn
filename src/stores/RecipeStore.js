@@ -36,6 +36,31 @@ class RecipeStore {
       this.list.push(recipe);
     }
   }
+
+  @action
+  async getRecipesWithIngredients(ingredientNames){
+
+    let querySnapshot = await firestore().collection('recipes').get()
+
+    this.list = [];
+
+    querySnapshot.forEach((documentSnapshot) => {
+      let recipe = Recipe.fromSnapshot(documentSnapshot);
+
+      let found = false;
+      for(let name of ingredientNames){
+        if(recipe.containsIngredient(name)){
+          found = true;
+          break;
+        }
+      }
+
+      if(found){
+        this.list.push(recipe);
+      }
+    });
+  }
 }
+
 
 export default RecipeStore;
