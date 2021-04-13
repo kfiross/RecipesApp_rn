@@ -81,6 +81,6 @@ const styles = {
     width: wp('80%'),
     height: 50,
     alignSelf: 'center',
-    backgroundColor: '#3f51b5',
+    backgroundColor: 'app',
   },
 };

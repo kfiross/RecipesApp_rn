@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {Text, View, Button, Image, TouchableHighlight} from 'react-native';
 import {Card, IconButton, Colors} from 'react-native-paper';
-import {ScrollView} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/core';
 import auth from '@react-native-firebase/auth';
 import RecipesApi from '../../services/api/RecipesApi';
-import Images from '../../res/images';
+import images from '../../res/images';
 import {ImageLoader} from 'react-native-image-fallback';
-
 
 const RecipeComponent = ({recipe}) => {
   const navigation = useNavigation();
@@ -58,7 +56,7 @@ const RecipeComponent = ({recipe}) => {
               <ImageLoader
                 style={{flex: 1, zIndex: 2,width: 160, overflow: 'hidden', borderRadius: 12, borderTopRightRadius: 0, borderBottomRightRadius: 0}}
                 source={recipe.image}
-                fallback={Images.not_found}
+                fallback={images.not_found}
               />
             </View>
             <View style={{width: 12}}/>

@@ -3,7 +3,7 @@ import {initReactI18next} from 'react-i18next';
 import {I18nManager} from 'react-native';
 import RNRestart from 'react-native-restart';
 
-import heLocal from '../../i18n/he.json';
+import heLocal from '../../../assets/i18n/he.json';
 
 // the translations
 const resources = {

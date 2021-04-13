@@ -5,6 +5,7 @@ import RecipeDetailsScreen from '../screens/RecipeDetailsScreen';
 import React from 'react';
 
 import {createStackNavigator} from '@react-navigation/stack';
+import appColors from '../../res/appColors';
 const Stack = createStackNavigator();
 
 const HomeContainer = () => {
@@ -16,7 +17,7 @@ const HomeContainer = () => {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#3f51b5',
+          backgroundColor: appColors.primary,
         },
         headerTintColor: '#fff',
         elevation: 8,

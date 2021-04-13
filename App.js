@@ -9,7 +9,6 @@ import auth from '@react-native-firebase/auth';
 import './src/services/i18n';
 import MainContainer from './src/views/containers/MainContainer';
 
-
 const App: () => React$Node = () => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
@@ -27,6 +26,7 @@ const App: () => React$Node = () => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber;  // unsubscribe on unmount
   }, []);
+
 
   if (initializing) {
     return null;

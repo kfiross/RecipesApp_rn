@@ -11,6 +11,7 @@ import {
 
 import {useTranslation} from 'react-i18next';
 
+
 const HomeScreen = () => {
   const colors = ['#cccc00', '#ffbb33', '#ff4444', '#33b5e5', '#4CAF50'];
   const navigation = useNavigation();
